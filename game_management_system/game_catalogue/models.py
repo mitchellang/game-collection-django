@@ -9,6 +9,8 @@ from datetime import date
 
 class Game(models.Model):
     """Model representing an author."""
+    game_id = models.UUIDField(primary_key = True,  default = uuid.uuid4,
+                               help_text = "Unique game identifier Id")
     game_title = models.CharField(max_length=100)
     game_description = models.TextField(max_length=2000)
     game_category = models.CharField(max_length=200)
@@ -26,11 +28,11 @@ class Game(models.Model):
     game_rating = models.IntegerField(choices = RATING_CHOICES)
 
     def get_absolute_url(self):
-        return reverse('game-detail', args=[str(self.id)])
+        return reverse('game-detail', args=[str(self.game_id)])
 
     def __str__(self):
         """String for representing the Model object."""
-        return self.game_title
+        return self.game_id
 
 
 class GameCollection(models.Model):
@@ -38,7 +40,7 @@ class GameCollection(models.Model):
     collection_name = models.CharField(max_length = 200, help_text = 'Name of game collection')
     collection_created_date = models.DateField(null = True, blank = True)
     collection_description = models.TextField(max_length = 2000)
-    collection_games = models.ManyToManyField(Game, help_text="Games belonging to a Collection")
+    collection_games_id = models.ManyToManyField(Game, help_text="Games belonging to a Collection")
 
     def __str__(self):
         """String for representing the Model object."""
