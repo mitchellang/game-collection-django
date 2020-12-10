@@ -1,17 +1,21 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Game Collection: {{ gamecollection.collection_name }}</h1>
+    <h1>Game Collection: {{ gamecollection.collection_name }}</h1>
 
-  <p><strong>Collection Description:</strong> {{ gamecollection.collection_description }}</p> <!-- author detail link not yet defined -->
-<div style="margin-left:20px;margin-top:20px">
-<h4>Game Collection</h4>
+    <button type="button">
+        <a href="{{ gamecollection.get_absolute_url }}/delete/">Delete Collection</a>
+    </button>
 
-{% for game in gamecollection.game_set.all %}
-    <hr>
-   <p><strong>Game Title:</strong> <a href="">{{ game.game_title }}</a></p> <!-- author detail link not yet defined -->
-   <p><strong>Game Rating:</strong> {{ game.game_description }}</p>
-   <p><strong>Game Description:</strong> {{ game.game_category }}</p>
-{% endfor %}
-</div>
+    <p><strong>Collection Description:</strong> {{ gamecollection.collection_description }}</p> <!-- author detail link not yet defined -->
+    <div style="margin-left:20px;margin-top:20px">
+        <h4>Game Collection</h4>
+
+        {% for game in gamecollection.game_set.all %}
+            <hr>
+            <p><strong>Game Title:</strong> <a href="">{{ game.game_title }}</a></p> <!-- author detail link not yet defined -->
+            <p><strong>Game Rating:</strong> {{ game.game_description }}</p>
+            <p><strong>Game Description:</strong> {{ game.game_category }}</p>
+        {% endfor %}
+    </div>
 {% endblock %}

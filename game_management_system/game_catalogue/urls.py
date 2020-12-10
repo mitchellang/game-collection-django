@@ -10,3 +10,10 @@ urlpatterns = [
 urlpatterns += [
     path('mycollection/', views.OwnedGamesByUserListView.as_view(), name='my-collection')
 ]
+
+# Add Remove collections
+urlpatterns += [
+    path('games/create/', views.GameCollectionCreate.as_view(), name='game-collection-create'),
+    path('games/<uuid:pk>/update/', views.GameCollectionUpdate.as_view(), name='game-collection-update'),
+    path('games/<uuid:pk>/delete/', views.GameCollectionDelete.as_view(), name='game-collection-delete'),
+    ]

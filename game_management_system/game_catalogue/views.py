@@ -5,6 +5,8 @@ from django.shortcuts import render
 from game_catalogue.models import GameCollection, Game
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 
 def index(request):
@@ -40,4 +42,24 @@ class OwnedGamesByUserListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         return GameCollection.objects.filter(owner = self.request.user)
+
+
+class GameCollectionCreate(CreateView):
+    model = GameCollection
+    fields = ['collection_name', 'collection_description']
+
+    def form_valid(self, form):
+        owner = self.request.user
+        form.instance.owner = owner
+        return super(GameCollectionCreate, self).form_valid(form)
+
+
+class GameCollectionUpdate(UpdateView):
+    model = GameCollection
+    fields = '__all__'  # Not recommended (potential security issue if more fields added)
+
+
+class GameCollectionDelete(DeleteView):
+    model = GameCollection
+    success_url = reverse_lazy('my-collection')
 

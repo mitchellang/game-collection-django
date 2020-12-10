@@ -11,6 +11,9 @@
                 </li>
             {% endfor %}
         </ul>
+        <button type="button">
+            <a href="{% url 'game-collection-create' %}">Create Collection</a>
+        </button>
 
     {% else %}
         <p>There are no games owned.</p>

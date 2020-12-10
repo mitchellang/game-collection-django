@@ -13,7 +13,7 @@ class GameCollection(models.Model):
     collection_id = models.UUIDField(primary_key = True,  default = uuid.uuid4,
                                      help_text = "Unique collection identifier Id")
     collection_name = models.CharField(max_length = 200, help_text = 'Name of game collection')
-    collection_created_date = models.DateField(null = True, blank = True)
+    collection_created_date = models.DateField(null = True, blank = True, default=date.today)
     collection_description = models.TextField(max_length = 2000)
     owner = models.ForeignKey(User, on_delete = models.SET_NULL, null = True, blank = True)
 
