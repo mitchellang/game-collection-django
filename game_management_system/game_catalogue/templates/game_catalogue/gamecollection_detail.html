@@ -6,16 +6,26 @@
     <button type="button">
         <a href="{{ gamecollection.get_absolute_url }}/delete/">Delete Collection</a>
     </button>
+    <button type="button">
+        <a href="{{ gamecollection.get_absolute_url }}/update/">Update Collection</a>
+    </button>
+    <button type="button">
+        <a href="{{ gamecollection.get_absolute_url }}/create/">Create Game</a>
+    </button>
 
     <p><strong>Collection Description:</strong> {{ gamecollection.collection_description }}</p> <!-- author detail link not yet defined -->
     <div style="margin-left:20px;margin-top:20px">
         <h4>Game Collection</h4>
+        {% if gamecollection.game_set.all %}
+            {% for game in gamecollection.game_set.all %}
+                <hr>
+                <p><strong>Game Title:</strong> <a href="">{{ game.game_title }}</a></p> <!-- author detail link not yet defined -->
+                <p><strong>Game Rating:</strong> {{ game.game_description }}</p>
+                <p><strong>Game Description:</strong> {{ game.game_category }}</p>
+            {% endfor %}
+        {% else %}
+            <p>There are no Games in your account.</p>
+        {% endif %}
 
-        {% for game in gamecollection.game_set.all %}
-            <hr>
-            <p><strong>Game Title:</strong> <a href="">{{ game.game_title }}</a></p> <!-- author detail link not yet defined -->
-            <p><strong>Game Rating:</strong> {{ game.game_description }}</p>
-            <p><strong>Game Description:</strong> {{ game.game_category }}</p>
-        {% endfor %}
     </div>
 {% endblock %}
