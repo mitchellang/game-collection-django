@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Game Collection: {{ gamecollection.collection_name }}</h1>
+
+    <button type="button">
+        <a href="{{ game.get_absolute_url }}/delete/">Delete Game</a>
+    </button>
+    <button type="button">
+        <a href="{{ game.get_absolute_url }}/edit/">Edit Game</a>
+    </button>
+
+
+    <p><strong>Collection Description:</strong> {{ gamecollection.collection_description }}</p> <!-- author detail link not yet defined -->
+    <div style="margin-left:20px;margin-top:20px">
+        <h4>{{ game.game_title }}</h4>
+        <hr>
+        <p><strong>Game Title:</strong> {{ game.game_title }}</p> <!-- author detail link not yet defined -->
+        <p><strong>Game Created Date:</strong> {{ game.game_description }}</p>
+        <p><strong>Game Rating:</strong> {{ game.game_description }}</p>
+        <p><strong>Game Rule:</strong> {{ game.game_rule }}</p>
+        <p><strong>Game Rating:</strong> {{ game.game_rating }}</p>
+        <p><strong>Game Category:</strong> {{ game.game_category }}</p>
+    </div>
+{% endblock %}

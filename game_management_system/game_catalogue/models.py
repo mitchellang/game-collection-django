@@ -47,7 +47,7 @@ class Game(models.Model):
     game_rating = models.IntegerField(choices = RATING_CHOICES, null=True)
 
     def get_absolute_url(self):
-        return str(self.game_id)
+        return reverse('game-detail', args=[str(self.game_id)])
 
     def __str__(self):
         """String for representing the Model object."""

@@ -19,9 +19,16 @@
         {% if gamecollection.game_set.all %}
             {% for game in gamecollection.game_set.all %}
                 <hr>
-                <p><strong>Game Title:</strong> <a href="">{{ game.game_title }}</a></p> <!-- author detail link not yet defined -->
+                <p><strong><a href="{{ game.get_absolute_url }}">{{ game.game_title }}</a></strong></p>
+                <p><strong>Game Category:</strong> {{ game.game_category }}</p>
                 <p><strong>Game Rating:</strong> {{ game.game_description }}</p>
-                <p><strong>Game Description:</strong> {{ game.game_category }}</p>
+                <button type="button">
+                    <a href="{{ game.get_absolute_url }}/update/">Update Game</a>
+                </button>
+                <button type="button">
+                    <a href="{{ game.get_absolute_url }}/delete/">Delete Game</a>
+                </button>
+
             {% endfor %}
         {% else %}
             <p>There are no Games in your account.</p>

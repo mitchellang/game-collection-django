@@ -27,11 +27,6 @@ def index(request):
     return render(request, 'index.html', context = context)
 
 
-class GameCollectionListView(generic.ListView):
-    model = GameCollection
-    paginate_by = 10
-
-
 class GameCollectionDetailView(generic.DetailView):
     model = GameCollection
 
@@ -44,6 +39,10 @@ class OwnedGamesByUserListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         return GameCollection.objects.filter(owner = self.request.user)
+
+
+class GameDetailView(generic.DetailView):
+    model = Game
 
 
 class GameCollectionCreate(CreateView):
@@ -90,10 +89,10 @@ class GameCreate(CreateView):
 
 
 class GameUpdate(UpdateView):
-    model = GameCollection
-    fields = ['collection_name', 'collection_description']  # Not recommended (potential security issue if more fields added)
+    model = Game
+    fields = ['game_title', 'game_description', 'game_collection']
 
 
 class GameDelete(DeleteView):
-    model = GameCollection
+    model = Game
     success_url = reverse_lazy('my-collection')
