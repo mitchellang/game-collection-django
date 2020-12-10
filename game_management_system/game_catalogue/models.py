@@ -31,9 +31,9 @@ class Game(models.Model):
                                help_text = "Unique game identifier Id")
     game_title = models.CharField(max_length=100)
     game_description = models.TextField(max_length=2000)
-    game_category = models.CharField(max_length=200)
+    game_category = models.CharField(max_length=200, null=True, default=None)
     game_rule = models.TextField(max_length=2000)
-    game_created_date = models.DateField(null=True, blank=True)
+    game_created_date = models.DateField(null=True, blank=True,default=date.today)
     game_collection = models.ManyToManyField(GameCollection, help_text = "Game collection Game belongs to")
 
     RATING_CHOICES = (
@@ -44,7 +44,7 @@ class Game(models.Model):
         (5, "Very Good")
     )
 
-    game_rating = models.IntegerField(choices = RATING_CHOICES)
+    game_rating = models.IntegerField(choices = RATING_CHOICES, null=True)
 
     def get_absolute_url(self):
         return str(self.game_id)

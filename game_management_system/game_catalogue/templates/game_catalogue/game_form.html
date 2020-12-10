@@ -2,7 +2,6 @@
 
 {% block content %}
   <form action="" method="post">
-  <p>{{ request.resolver_match.kwargs.pk }}</p>
     {% csrf_token %}
     <table>
     {{ form.as_table }}

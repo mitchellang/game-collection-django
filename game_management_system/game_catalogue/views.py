@@ -6,7 +6,7 @@ from game_catalogue.models import GameCollection, Game
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
 
 
@@ -68,13 +68,24 @@ class GameCollectionDelete(DeleteView):
 
 class GameCreate(CreateView):
     model = Game
-    fields = ['game_title', 'game_description','game_collection']
+    fields = ['game_title', 'game_description', 'game_collection']
+
+    def get_initial(self):
+        return {"game_collection": self.kwargs.get("pk")}
+
+    def get_success_url(self):
+        return reverse('game-collection-detail', args=[str(self.get_initial()['game_collection'])])
+
+    def get_form(self, *args, **kwargs):
+        form = super().get_form(*args, **kwargs)  # Get the form as usual
+        user = self.request.user
+        form.fields['game_collection'].queryset = GameCollection.objects.filter(owner=user)
+        return form
 
     def form_valid(self, form):
         owner = self.request.user
         form.instance.owner = owner
-        form.instance.game_collection = Game.game_collection.filter(
-            game__game_collection__collection_id = self.request.resolver_match.kwargs.pk)
+        form.instance.game_collection.set(Game)
         return super(GameCreate, self).form_valid(form)
 
 
