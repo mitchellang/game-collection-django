@@ -3,8 +3,26 @@ from django.db import models
 # Create your models here.
 
 from django.urls import reverse
+from django.contrib.auth.models import User
 import uuid  # Required for unique book instances
 from datetime import date
+
+
+class GameCollection(models.Model):
+    """Model representing a Game Collection genre."""
+    collection_id = models.UUIDField(primary_key = True,  default = uuid.uuid4,
+                                     help_text = "Unique collection identifier Id")
+    collection_name = models.CharField(max_length = 200, help_text = 'Name of game collection')
+    collection_created_date = models.DateField(null = True, blank = True)
+    collection_description = models.TextField(max_length = 2000)
+    owner = models.ForeignKey(User, on_delete = models.SET_NULL, null = True, blank = True)
+
+    def get_absolute_url(self):
+        return reverse('game-collection-detail', args=[str(self.collection_id)])
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.collection_name
 
 
 class Game(models.Model):
@@ -16,6 +34,7 @@ class Game(models.Model):
     game_category = models.CharField(max_length=200)
     game_rule = models.TextField(max_length=2000)
     game_created_date = models.DateField(null=True, blank=True)
+    game_collection = models.ManyToManyField(GameCollection, help_text = "Game collection Game belongs to")
 
     RATING_CHOICES = (
         (1, "Very Bad"),
@@ -28,20 +47,11 @@ class Game(models.Model):
     game_rating = models.IntegerField(choices = RATING_CHOICES)
 
     def get_absolute_url(self):
-        return reverse('game-detail', args=[str(self.game_id)])
+        return str(self.game_id)
 
     def __str__(self):
         """String for representing the Model object."""
-        return self.game_id
+        return '{0} ({1})'.format(self.game_id, self.game_title)
 
 
-class GameCollection(models.Model):
-    """Model representing a book genre."""
-    collection_name = models.CharField(max_length = 200, help_text = 'Name of game collection')
-    collection_created_date = models.DateField(null = True, blank = True)
-    collection_description = models.TextField(max_length = 2000)
-    collection_games_id = models.ManyToManyField(Game, help_text="Games belonging to a Collection")
 
-    def __str__(self):
-        """String for representing the Model object."""
-        return self.collection_name

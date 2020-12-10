@@ -23,4 +23,5 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('game_catalogue/', include('game_catalogue.urls')),
                   path('', RedirectView.as_view(url = 'game_catalogue/')),
+                  path('accounts/', include('django.contrib.auth.urls')),
               ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)

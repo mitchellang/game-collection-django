@@ -4,14 +4,15 @@ from django.shortcuts import render
 
 from game_catalogue.models import GameCollection, Game
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def index(request):
     """View function for home page of site."""
 
     # Number of collections
-    num_collections = GameCollection.objects.all().count()
-    num_games = Game.objects.all().count()
+    num_collections = GameCollection.objects.filter(owner = request.user).count()
+    num_games = Game.objects.filter(game_collection__owner = request.user).count()
 
     context = {
         'num_collections': num_collections,
@@ -22,10 +23,21 @@ def index(request):
     return render(request, 'index.html', context = context)
 
 
-class GameListView(generic.ListView):
-    model = Game
+class GameCollectionListView(generic.ListView):
+    model = GameCollection
     paginate_by = 10
 
 
-class GameDetailView(generic.DetailView):
-    model = Game
+class GameCollectionDetailView(generic.DetailView):
+    model = GameCollection
+
+
+class OwnedGamesByUserListView(LoginRequiredMixin, generic.ListView):
+    """Generic class-based view listing books on loan to current user."""
+    model = GameCollection
+    template_name = 'game_catalogue/gamecollection_list_owned_user.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return GameCollection.objects.filter(owner = self.request.user)
+

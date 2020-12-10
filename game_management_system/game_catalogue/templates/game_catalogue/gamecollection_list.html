@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Game Collection List</h1>
+  {% if gamecollection_list %}
+  <ul>
+    {% for collection in gamecollection_list %}
+      <li>
+        <a href="{{ collection.get_absolute_url }}">{{ collection.collection_name }}</a> ({{collection.collection_description}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no collection in your account.</p>
+  {% endif %}
+{% endblock %}

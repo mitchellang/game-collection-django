@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>My Collections</h1>
+
+    {% if gamecollection_list %}
+        <ul>
+            {% for collection in gamecollection_list %}
+                <li>
+                    <a href="{{ collection.get_absolute_url }}">{{ collection.collection_name }}</a> ({{collection.collection_description}})
+                </li>
+            {% endfor %}
+        </ul>
+
+    {% else %}
+        <p>There are no games owned.</p>
+    {% endif %}
+{% endblock %}
