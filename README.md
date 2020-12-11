@@ -48,8 +48,10 @@ If you have not logged in before you should click on the "Sign up?" link, where 
 This functionality has not yet been completed so for testing purposes please use the following username and password
 to login:
 
+```
 username: admin
 password: admin
+```
 
 ## Game collections
 
