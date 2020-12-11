@@ -2,6 +2,10 @@
 
 {% block content %}
     <h1>My Collections</h1>
+    <button type="button">
+        <a href="{% url 'game-collection-create' %}">Create Collection</a>
+    </button>
+    <p>Wonderful Collections</p>
 
     {% if gamecollection_list %}
         <ul>
@@ -11,11 +15,9 @@
                 </li>
             {% endfor %}
         </ul>
-        <button type="button">
-            <a href="{% url 'game-collection-create' %}">Create Collection</a>
-        </button>
 
     {% else %}
         <p>There are no games owned.</p>
+
     {% endif %}
 {% endblock %}

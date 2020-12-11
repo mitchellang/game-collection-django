@@ -84,7 +84,6 @@ class GameCreate(CreateView):
     def form_valid(self, form):
         owner = self.request.user
         form.instance.owner = owner
-        form.instance.game_collection.set(Game)
         return super(GameCreate, self).form_valid(form)
 
 
