@@ -61,6 +61,8 @@ A user can have multiple "game collections" within their game catalogue.
 
 This functionality is designed to be expanded to allow different formats of games to be kept in collections, e.g boardgames, cardgames, videogames etc.
 
+![](./images/1.png)
+
 ### Creating a game collection
 
 Navigate to the "My Collection" page and press on "Create collection".
@@ -69,15 +71,21 @@ This will open a page with boxes for the user to fill-in related to the "game co
 
 Update the boxes with the relevant information and click the "Submit" button at the bottom of the page.
 
+![](./images/2.png)
+
 ### Update a game collection
 
 Navigate to the "My Collection" page and choose the game collection you wish to update.
 
 At the top of the game collection page you should click on "Update collection"
 
+![](./images/3.png)
+
 This will open a page with boxes for the user to fill-in related to the "game collection" that is to be added.
 
 Update the boxes with the relevant information and click the "Submit" button at the bottom of the page.
+
+![](./images/4.png)
 
 ### Delete a game collection
 
@@ -86,6 +94,8 @@ Navigate to the "My Collection" page and choose the game collection you wish to 
 At the top of the game collection page you should click on "Delete collection"
 
 You will be prompted for a confirmation of the deletion, if you are sure you wish to delete the game press the "Yes, delete." button.
+
+![](./images/5.png)
 
 ## Games
 
@@ -101,15 +111,21 @@ This will open a page with boxes for the user to fill-in related to the game tha
 
 Update the boxes with the relevant information and click the "Submit" button at the bottom of the page.
 
+![](./images/6.png)
+
 ### Updating a game 
 
 From the "Game collection" you will see all the games that are listed as being part of the collection.
 
 To update the details of a particular game, click on the "Update Game" button  belonging to the game you wish to update.
 
+![](./images/7.png)
+
 This will open a page with boxes for the user to fill-in related to the game that is to be updated.
 
 Make the desired changes to the relevant parts of the game (description, rules, category etc) and when satisfued, press the "Submit" button at the bottom of the page.
+
+![](./images/6.png)
 
 ### Deleting a game
 
@@ -117,5 +133,8 @@ From the "Game collection" you will see all the games that are listed as being p
 
 To delete a particular game, click on the "Delete Game" button belonging to the game you wish to update.
 
+![](./images/7.png)
+
 You will be prompted for a confirmation of the deletion, if you are sure you wish to delete the game press the "Yes, delete." button.
 
+![](./images/8.png)
