@@ -53,6 +53,8 @@ username: admin
 password: admin
 ```
 
+![](./images/9.png)
+
 ## Game collections
 
 The "game collection" displays all the games belonging to a given collection.
