@@ -13,15 +13,23 @@
         <a href="{{ gamecollection.get_absolute_url }}/create/">Create Game</a>
     </button>
 
-    <p><strong>Collection Description:</strong> {{ gamecollection.collection_description }}</p> <!-- author detail link not yet defined -->
+    <p><strong>Collection Description:</strong> {{ gamecollection.collection_description }}</p>
+    <!-- author detail link not yet defined -->
     <div style="margin-left:20px;margin-top:20px">
-        <h4>Game Collection</h4>
+        <h4>Search Game Collection</h4>
         {% if gamecollection.game_set.all %}
+            <form action="{{ request.path }}" method="get">
+                <input id="al-search" type="text"
+                       name="game_name" value="{{ request.GET.account }}"
+                       class="form-control"/>
+                <input type="submit"
+                       value="Search" class="btn btn-success"/>
+            </form>
             {% for game in gamecollection.game_set.all %}
                 <hr>
                 <p><strong><a href="{{ game.get_absolute_url }}">{{ game.game_title }}</a></strong></p>
                 <p><strong>Game Category:</strong> {{ game.game_category }}</p>
-                <p><strong>Game Rating:</strong> {{ game.game_description }}</p>
+                <p><strong>Game Rating:</strong> {{ game.game_rating }}</p>
                 <button type="button">
                     <a href="{{ game.get_absolute_url }}/update/">Update Game</a>
                 </button>

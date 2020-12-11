@@ -57,7 +57,7 @@ class GameCollectionCreate(CreateView):
 
 class GameCollectionUpdate(UpdateView):
     model = GameCollection
-    fields = ['collection_name', 'collection_description']  # Not recommended (potential security issue if more fields added)
+    fields = ['collection_name', 'collection_description']
 
 
 class GameCollectionDelete(DeleteView):
@@ -67,7 +67,8 @@ class GameCollectionDelete(DeleteView):
 
 class GameCreate(CreateView):
     model = Game
-    fields = ['game_title', 'game_description', 'game_collection']
+    fields = ['game_title', 'game_description', 'game_rule', 'game_created_date', 'game_category',
+              'game_rating']
 
     def get_initial(self):
         return {"game_collection": self.kwargs.get("pk")}
@@ -75,21 +76,19 @@ class GameCreate(CreateView):
     def get_success_url(self):
         return reverse('game-collection-detail', args=[str(self.get_initial()['game_collection'])])
 
-    def get_form(self, *args, **kwargs):
-        form = super().get_form(*args, **kwargs)  # Get the form as usual
-        user = self.request.user
-        form.fields['game_collection'].queryset = GameCollection.objects.filter(owner=user)
-        return form
-
     def form_valid(self, form):
         owner = self.request.user
         form.instance.owner = owner
+        form.save()
+        game_collection = GameCollection.objects.get(collection_id=str(self.get_initial()['game_collection']))
+        form.instance.game_collection.set([game_collection])
         return super(GameCreate, self).form_valid(form)
 
 
 class GameUpdate(UpdateView):
     model = Game
-    fields = ['game_title', 'game_description', 'game_collection']
+    fields = ['game_title', 'game_description', 'game_rule', 'game_created_date', 'game_category',
+              'game_rating']
 
 
 class GameDelete(DeleteView):

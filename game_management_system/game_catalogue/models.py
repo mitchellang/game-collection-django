@@ -33,7 +33,7 @@ class Game(models.Model):
     game_description = models.TextField(max_length=2000)
     game_category = models.CharField(max_length=200, null=True, default=None)
     game_rule = models.TextField(max_length=2000)
-    game_created_date = models.DateField(null=True, blank=True,default=date.today)
+    game_created_date = models.DateField(null=True, blank=True, default=date.today)
     game_collection = models.ManyToManyField(GameCollection, help_text = "Game collection Game belongs to")
 
     RATING_CHOICES = (
