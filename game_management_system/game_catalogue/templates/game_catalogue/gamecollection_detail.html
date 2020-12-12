@@ -23,7 +23,21 @@
                        name="game_name" value="{{ request.GET.account }}"
                        class="form-control"/>
                 <input type="submit"
-                       value="Search" class="btn btn-success"/>
+                       value="Game Title Search" class="btn btn-success"/>
+            </form>
+            <form action="{{ request.path }}" method="get">
+                <input id="al-search" type="text"
+                       name="game_category" value="{{ request.GET.account }}"
+                       class="form-control"/>
+                <input type="submit"
+                       value="Game Category Search" class="btn btn-success"/>
+            </form>
+            <form action="{{ request.path }}" method="get">
+                <input id="al-search" type="text"
+                       name="game_description" value="{{ request.GET.account }}"
+                       class="form-control"/>
+                <input type="submit"
+                       value="Game Description Search" class="btn btn-success"/>
             </form>
             {% for game in filtered_games %}
                 <hr>

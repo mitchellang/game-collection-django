@@ -30,16 +30,29 @@ def index(request):
 class GameCollectionDetailView(generic.DetailView):
     model = GameCollection
 
+    def get_parameter_value(self, parameter_key):
+        try:
+            value = self.request.GET.get(parameter_key, )
+        except KeyError:
+            value = None
+        return value
+
     def get_context_data(self, **kwargs):
         context = super(GameCollectionDetailView, self).get_context_data(**kwargs)
         collection = self.get_object()
-        try:
-            a = self.request.GET.get('game_name', )
-        except KeyError:
-            a = None
-        if a or a != "":
+        name = self.get_parameter_value('game_name')
+        category = self.get_parameter_value('game_category')
+        description = self.get_parameter_value('game_description')
+
+        if name and name != "":
             context['filtered_games'] = Game.objects.filter(game_collection = collection,
-                                                            game_title__contains = a)
+                                                            game_title__contains = name)
+        elif category and category != "":
+            context['filtered_games'] = Game.objects.filter(game_collection = collection,
+                                                            game_category__contains = category)
+        elif description and description != "":
+            context['filtered_games'] = Game.objects.filter(game_collection = collection,
+                                                            game_description__contains = description)
         else:
             context['filtered_games'] = Game.objects.filter(game_collection = collection)
         return context
