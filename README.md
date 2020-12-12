@@ -2,21 +2,21 @@
 
 ## Starting the application
 
-Please make sure you have the python library django installed
+Please make sure you have the python library ***Django*** installed
 This prototype was tested using the Anaconda supplied Python binary; version 3.7.7
 
-To install django using conda you can type the following command:
+To install Django using conda you can type the following command:
 
 ```
 conda install -c anaconda django
 ```
 
-Please follow the prompts until django is successfully installed.
+Please follow the prompts until Django is successfully installed.
 
-Additional advice on how to install django can be obtained from django's website \
+Additional advice on how to install Django can be obtained from Django's website \
 https://docs.djangoproject.com/en/3.1/topics/install/
 
-To start the django server, move into the application directory containing the "manage.py" file
+To start the Django server, move into the application directory containing the "manage.py" file
 
 In this location run the following command:
 
@@ -24,7 +24,7 @@ In this location run the following command:
 python manage.py runserver
 ```
 
-This will prompt you with:
+This should prompt you with:
 
 ```
 Watching for file changes with StatReloader
