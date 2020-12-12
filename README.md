@@ -13,6 +13,9 @@ conda install -c anaconda django
 
 Please follow the prompts until django is successfully installed.
 
+Additional advice on how to install django can be obtained from django's website \
+https://docs.djangoproject.com/en/3.1/topics/install/
+
 To start the django server, move into the application directory containing the "manage.py" file
 
 In this location run the following command:
