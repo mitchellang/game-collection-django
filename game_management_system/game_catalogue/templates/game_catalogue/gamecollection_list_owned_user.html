@@ -10,9 +10,9 @@
     {% if gamecollection_list %}
         <ul>
             {% for collection in gamecollection_list %}
-                <li>
-                    <a href="{{ collection.get_absolute_url }}">{{ collection.collection_name }}</a>
-                </li>
+                <hr>
+                <p><strong><a href="{{ collection.get_absolute_url }}">{{ collection.collection_name }}</a></strong></p>
+                <p><strong>Description:</strong> {{ collection.collection_description }}</p>
             {% endfor %}
         </ul>
 
