@@ -30,6 +30,20 @@ def index(request):
 class GameCollectionDetailView(generic.DetailView):
     model = GameCollection
 
+    def get_context_data(self, **kwargs):
+        context = super(GameCollectionDetailView, self).get_context_data(**kwargs)
+        collection = self.get_object()
+        try:
+            a = self.request.GET.get('game_name', )
+        except KeyError:
+            a = None
+        if a or a != "":
+            context['filtered_games'] = Game.objects.filter(game_collection = collection,
+                                                            game_title__contains = a)
+        else:
+            context['filtered_games'] = Game.objects.filter(game_collection = collection)
+        return context
+
 
 class OwnedGamesByUserListView(LoginRequiredMixin, generic.ListView):
     """Generic class-based view listing books on loan to current user."""

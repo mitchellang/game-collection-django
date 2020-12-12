@@ -25,7 +25,7 @@
                 <input type="submit"
                        value="Search" class="btn btn-success"/>
             </form>
-            {% for game in gamecollection.game_set.all %}
+            {% for game in filtered_games %}
                 <hr>
                 <p><strong><a href="{{ game.get_absolute_url }}">{{ game.game_title }}</a></strong></p>
                 <p><strong>Game Category:</strong> {{ game.game_category }}</p>
