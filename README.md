@@ -46,9 +46,11 @@ The application requires each user to create a login.
 
 The other pages will not render until this has been completed.
 
-If you have not logged in before you should click on the "Sign up?" link, where you can sign up.
+If you have not logged in before you should click on the "Sign up" link, where you can sign up.
 
-This functionality has not yet been completed so for testing purposes please use the following username and password
+![](./images/10.png)
+
+If you are interested in using admin privileges, please use the following username and password
 to login:
 
 ```
@@ -57,6 +59,9 @@ password: admin
 ```
 
 ![](./images/9.png)
+
+If you are interested in looking at the database in the backend, using the same admin credentials, you can access the admin portal by heading to:
+http://127.0.0.1:8000/admin/
 
 ## Game collections
 
