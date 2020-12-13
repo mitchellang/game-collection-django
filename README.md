@@ -150,3 +150,10 @@ To delete a particular game, click on the "Delete Game" button belonging to the 
 You will be prompted for a confirmation of the deletion, if you are sure you wish to delete the game press the "Yes, delete." button.
 
 ![](./images/8.png)
+
+### Searching a game
+From each "Game collection", you have 3 search bars to use, one for each search category, Game Title, Game Category and Game Description.
+
+![](./images/8.png)
+
+Simply type in the search boxes you want to search up your game on, and the results will be filtered.
