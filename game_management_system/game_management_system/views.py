@@ -5,11 +5,12 @@ from django.shortcuts import render
 from django.contrib.auth.models import User, Group
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
+from game_management_system import forms
 
 
 class UserSignupView(CreateView):
     model = User
-    fields = ['username', 'password', 'email', 'first_name', 'last_name']
+    form_class = forms.UserRegisterForm
 
     def form_valid(self, form):
         form.save()

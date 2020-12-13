@@ -19,6 +19,8 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
+from django.contrib.auth.forms import UserCreationForm
+
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
