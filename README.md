@@ -48,6 +48,8 @@ The other pages will not render until this has been completed.
 
 If you have not logged in before you should click on the "Sign up" link, where you can sign up.
 
+Fill up the form and submit, then you can use the credential you have created.
+
 ![](./images/10.png)
 
 If you are interested in using admin privileges, please use the following username and password
