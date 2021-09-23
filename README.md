@@ -1,4 +1,5 @@
-# README
+# Game Collection
+A simple Django application as an experimental project
 
 ## Starting the application
 
